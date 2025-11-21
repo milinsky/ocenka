@@ -1,0 +1,53 @@
+{% extends 'admin/base.html.twig' %}
+{% import 'macros/assets.html.twig' as assets %}
+
+{% block title %}Админ-панель - Заказы{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>Все заказы</h2>
+        <button class="btn btn-sm btn-outline-secondary" id="logout-btn">Выйти</button>
+    </div>
+
+    <div id="alert-container"></div>
+
+    <div id="loading" class="text-center py-5">
+        <div class="spinner-border text-primary" role="status">
+            <span class="visually-hidden">Загрузка...</span>
+        </div>
+    </div>
+
+    <div id="orders-container" class="d-none">
+        <div class="card shadow">
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Номер заказа</th>
+                                <th>Услуга</th>
+                                <th>Email клиента</th>
+                                <th>Стоимость</th>
+                                <th>Статус</th>
+                                <th>Дата создания</th>
+                            </tr>
+                        </thead>
+                        <tbody id="orders-table-body">
+                        </tbody>
+                    </table>
+                </div>
+
+                <div id="no-orders" class="text-center text-muted py-4 d-none">
+                    <p>Заказов пока нет</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+{{ assets.js('admin-orders') }}
+{% endblock %}
+

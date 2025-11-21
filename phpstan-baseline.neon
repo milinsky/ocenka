@@ -1,0 +1,542 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Method App\\ApiResource\\OrderResource\:\:toArray\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/ApiResource/OrderResource.php
+
+		-
+			message: '#^Method App\\ApiResource\\Request\\LoginRequest\:\:fromArray\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/ApiResource/Request/LoginRequest.php
+
+		-
+			message: '#^Parameter \$email of class App\\ApiResource\\Request\\LoginRequest constructor expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/ApiResource/Request/LoginRequest.php
+
+		-
+			message: '#^Parameter \$password of class App\\ApiResource\\Request\\LoginRequest constructor expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/ApiResource/Request/LoginRequest.php
+
+		-
+			message: '#^Method App\\ApiResource\\Request\\OrderCreateRequest\:\:fromArray\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/ApiResource/Request/OrderCreateRequest.php
+
+		-
+			message: '#^Parameter \$customerEmail of class App\\ApiResource\\Request\\OrderCreateRequest constructor expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/ApiResource/Request/OrderCreateRequest.php
+
+		-
+			message: '#^Parameter \$serviceId of class App\\ApiResource\\Request\\OrderCreateRequest constructor expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/ApiResource/Request/OrderCreateRequest.php
+
+		-
+			message: '#^Method App\\ApiResource\\Request\\OrderUpdateRequest\:\:fromArray\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/ApiResource/Request/OrderUpdateRequest.php
+
+		-
+			message: '#^Parameter \$status of class App\\ApiResource\\Request\\OrderUpdateRequest constructor expects string\|null, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/ApiResource/Request/OrderUpdateRequest.php
+
+		-
+			message: '#^Method App\\ApiResource\\Request\\PasswordResetConfirmRequest\:\:fromArray\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/ApiResource/Request/PasswordResetConfirmRequest.php
+
+		-
+			message: '#^Parameter \$newPassword of class App\\ApiResource\\Request\\PasswordResetConfirmRequest constructor expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/ApiResource/Request/PasswordResetConfirmRequest.php
+
+		-
+			message: '#^Parameter \$token of class App\\ApiResource\\Request\\PasswordResetConfirmRequest constructor expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/ApiResource/Request/PasswordResetConfirmRequest.php
+
+		-
+			message: '#^Method App\\ApiResource\\Request\\PasswordResetInitRequest\:\:fromArray\(\) has parameter \$data with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/ApiResource/Request/PasswordResetInitRequest.php
+
+		-
+			message: '#^Parameter \$email of class App\\ApiResource\\Request\\PasswordResetInitRequest constructor expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/ApiResource/Request/PasswordResetInitRequest.php
+
+		-
+			message: '#^Method App\\ApiResource\\ServiceResource\:\:toArray\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/ApiResource/ServiceResource.php
+
+		-
+			message: '#^Method App\\ApiResource\\UserResource\:\:__construct\(\) has parameter \$roles with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/ApiResource/UserResource.php
+
+		-
+			message: '#^Method App\\ApiResource\\UserResource\:\:toArray\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/ApiResource/UserResource.php
+
+		-
+			message: '#^Parameter \#1 \$data of static method App\\ApiResource\\Request\\LoginRequest\:\:fromArray\(\) expects array, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Controller/Api/AuthController.php
+
+		-
+			message: '#^Parameter \#1 \$data of static method App\\ApiResource\\Request\\PasswordResetConfirmRequest\:\:fromArray\(\) expects array, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Controller/Api/AuthController.php
+
+		-
+			message: '#^Parameter \#1 \$data of static method App\\ApiResource\\Request\\PasswordResetInitRequest\:\:fromArray\(\) expects array, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Controller/Api/AuthController.php
+
+		-
+			message: '#^Parameter \#1 \$data of static method App\\ApiResource\\Request\\OrderCreateRequest\:\:fromArray\(\) expects array, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Controller/Api/OrderController.php
+
+		-
+			message: '#^Parameter \#1 \$data of static method App\\ApiResource\\Request\\OrderUpdateRequest\:\:fromArray\(\) expects array, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Controller/Api/OrderController.php
+
+		-
+			message: '#^Parameter \#1 \$order of static method App\\ApiResource\\OrderResource\:\:fromEntity\(\) expects App\\Entity\\Order, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Controller/Api/OrderController.php
+
+		-
+			message: '#^Parameter \#1 \$service of static method App\\ApiResource\\ServiceResource\:\:fromEntity\(\) expects App\\Entity\\Service, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Controller/Api/ServiceController.php
+
+		-
+			message: '#^Parameter \#1 \$amount of class Money\\Money constructor expects int\|numeric\-string, string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Entity/Order.php
+
+		-
+			message: '#^Parameter \#1 \$code of class Money\\Currency constructor expects non\-empty\-string, string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Entity/Order.php
+
+		-
+			message: '#^Method App\\Entity\\Service\:\:getOrders\(\) return type with generic interface Doctrine\\Common\\Collections\\Collection does not specify its types\: TKey, T$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/Entity/Service.php
+
+		-
+			message: '#^Parameter \#1 \$amount of class Money\\Money constructor expects int\|numeric\-string, string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Entity/Service.php
+
+		-
+			message: '#^Parameter \#1 \$code of class Money\\Currency constructor expects non\-empty\-string, string given\.$#'
+			identifier: argument.type
+			count: 1
+			path: src/Entity/Service.php
+
+		-
+			message: '#^Property App\\Entity\\Service\:\:\$orders type mapping mismatch\: property can contain Doctrine\\Common\\Collections\\Collection but database expects Doctrine\\Common\\Collections\\Collection&iterable\<App\\Entity\\Order\>\.$#'
+			identifier: doctrine.associationType
+			count: 1
+			path: src/Entity/Service.php
+
+		-
+			message: '#^Property App\\Entity\\Service\:\:\$orders with generic interface Doctrine\\Common\\Collections\\Collection does not specify its types\: TKey, T$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/Entity/Service.php
+
+		-
+			message: '#^Method App\\Entity\\User\:\:getRoles\(\) should return array\<string\> but returns array\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Entity/User.php
+
+		-
+			message: '#^Method App\\Entity\\User\:\:getUserIdentifier\(\) should return non\-empty\-string but returns string\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Entity/User.php
+
+		-
+			message: '#^Method App\\Entity\\User\:\:setRoles\(\) has parameter \$roles with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Entity/User.php
+
+		-
+			message: '#^Property App\\Entity\\User\:\:\$roles type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Entity/User.php
+
+		-
+			message: '#^Class App\\Repository\\OrderRepository extends generic class Doctrine\\Bundle\\DoctrineBundle\\Repository\\ServiceEntityRepository but does not specify its types\: TEntityClass$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/Repository/OrderRepository.php
+
+		-
+			message: '#^Method App\\Repository\\OrderRepository\:\:findAll\(\) should return list\<object\> but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Repository/OrderRepository.php
+
+		-
+			message: '#^Method App\\Repository\\OrderRepository\:\:findByCustomerEmail\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Repository/OrderRepository.php
+
+		-
+			message: '#^Method App\\Repository\\OrderRepository\:\:findByCustomerEmail\(\) should return array but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Repository/OrderRepository.php
+
+		-
+			message: '#^Method App\\Repository\\OrderRepository\:\:findLatest\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Repository/OrderRepository.php
+
+		-
+			message: '#^Method App\\Repository\\OrderRepository\:\:findLatest\(\) should return array but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Repository/OrderRepository.php
+
+		-
+			message: '#^Method App\\Repository\\OrderRepository\:\:findOneByOrderNumber\(\) should return App\\Entity\\Order\|null but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Repository/OrderRepository.php
+
+		-
+			message: '#^Method App\\Repository\\OrderRepositoryInterface\:\:findAll\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Repository/OrderRepositoryInterface.php
+
+		-
+			message: '#^Method App\\Repository\\OrderRepositoryInterface\:\:findByCustomerEmail\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Repository/OrderRepositoryInterface.php
+
+		-
+			message: '#^Method App\\Repository\\OrderRepositoryInterface\:\:findLatest\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Repository/OrderRepositoryInterface.php
+
+		-
+			message: '#^Class App\\Repository\\ServiceRepository extends generic class Doctrine\\Bundle\\DoctrineBundle\\Repository\\ServiceEntityRepository but does not specify its types\: TEntityClass$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/Repository/ServiceRepository.php
+
+		-
+			message: '#^Method App\\Repository\\ServiceRepository\:\:findActive\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Repository/ServiceRepository.php
+
+		-
+			message: '#^Method App\\Repository\\ServiceRepository\:\:findActive\(\) should return array but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Repository/ServiceRepository.php
+
+		-
+			message: '#^Method App\\Repository\\ServiceRepository\:\:findAll\(\) should return list\<object\> but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Repository/ServiceRepository.php
+
+		-
+			message: '#^Method App\\Repository\\ServiceRepository\:\:findOneBySlug\(\) should return App\\Entity\\Service\|null but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Repository/ServiceRepository.php
+
+		-
+			message: '#^Method App\\Repository\\ServiceRepositoryInterface\:\:findActive\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Repository/ServiceRepositoryInterface.php
+
+		-
+			message: '#^Method App\\Repository\\ServiceRepositoryInterface\:\:findAll\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Repository/ServiceRepositoryInterface.php
+
+		-
+			message: '#^Class App\\Repository\\UserRepository extends generic class Doctrine\\Bundle\\DoctrineBundle\\Repository\\ServiceEntityRepository but does not specify its types\: TEntityClass$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/Repository/UserRepository.php
+
+		-
+			message: '#^Method App\\Repository\\UserRepository\:\:findAll\(\) should return list\<object\> but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Repository/UserRepository.php
+
+		-
+			message: '#^Method App\\Repository\\UserRepository\:\:findOneByEmail\(\) should return App\\Entity\\User\|null but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Repository/UserRepository.php
+
+		-
+			message: '#^Method App\\Repository\\UserRepository\:\:findOneByPasswordResetToken\(\) should return App\\Entity\\User\|null but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Repository/UserRepository.php
+
+		-
+			message: '#^Method App\\Repository\\UserRepositoryInterface\:\:findAll\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Repository/UserRepositoryInterface.php
+
+		-
+			message: '#^Call to an undefined method App\\Repository\\OrderRepositoryInterface\:\:find\(\)\.$#'
+			identifier: method.notFound
+			count: 3
+			path: src/Service/OrderService.php
+
+		-
+			message: '#^Call to an undefined method App\\Repository\\ServiceRepositoryInterface\:\:find\(\)\.$#'
+			identifier: method.notFound
+			count: 1
+			path: src/Service/OrderService.php
+
+		-
+			message: '#^Method App\\Service\\OrderService\:\:getAllOrders\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Service/OrderService.php
+
+		-
+			message: '#^Method App\\Service\\OrderService\:\:getOrder\(\) should return App\\Entity\\Order\|null but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: src/Service/OrderService.php
+
+		-
+			message: '#^Cannot access offset ''email'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: tests/Controller/Api/AuthControllerTest.php
+
+		-
+			message: '#^Cannot access offset ''error'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 2
+			path: tests/Controller/Api/AuthControllerTest.php
+
+		-
+			message: '#^Cannot access offset ''roles'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 2
+			path: tests/Controller/Api/AuthControllerTest.php
+
+		-
+			message: '#^Cannot access offset ''token'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: tests/Controller/Api/AuthControllerTest.php
+
+		-
+			message: '#^Cannot access offset ''user'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 6
+			path: tests/Controller/Api/AuthControllerTest.php
+
+		-
+			message: '#^Parameter \#1 \$json of function json_decode expects string, string\|false given\.$#'
+			identifier: argument.type
+			count: 6
+			path: tests/Controller/Api/AuthControllerTest.php
+
+		-
+			message: '#^Parameter \#2 \$array of method PHPUnit\\Framework\\Assert\:\:assertArrayHasKey\(\) expects array\<mixed\>\|ArrayAccess\<\(int\|string\), mixed\>, mixed given\.$#'
+			identifier: argument.type
+			count: 11
+			path: tests/Controller/Api/AuthControllerTest.php
+
+		-
+			message: '#^Parameter \#2 \$haystack of method PHPUnit\\Framework\\Assert\:\:assertContains\(\) expects iterable, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/Controller/Api/AuthControllerTest.php
+
+		-
+			message: '#^Parameter \#6 \$content of method Symfony\\Component\\BrowserKit\\AbstractBrowser\<Symfony\\Component\\HttpFoundation\\Request,Symfony\\Component\\HttpFoundation\\Response\>\:\:request\(\) expects string\|null, string\|false given\.$#'
+			identifier: argument.type
+			count: 7
+			path: tests/Controller/Api/AuthControllerTest.php
+
+		-
+			message: '#^Binary operation "\." between ''/api/orders/'' and mixed results in an error\.$#'
+			identifier: binaryOp.invalid
+			count: 6
+			path: tests/Controller/Api/OrderControllerTest.php
+
+		-
+			message: '#^Cannot access offset ''customerEmail'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 2
+			path: tests/Controller/Api/OrderControllerTest.php
+
+		-
+			message: '#^Cannot access offset ''error'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: tests/Controller/Api/OrderControllerTest.php
+
+		-
+			message: '#^Cannot access offset ''id'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 6
+			path: tests/Controller/Api/OrderControllerTest.php
+
+		-
+			message: '#^Cannot access offset ''status'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: tests/Controller/Api/OrderControllerTest.php
+
+		-
+			message: '#^Cannot access offset ''token'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: tests/Controller/Api/OrderControllerTest.php
+
+		-
+			message: '#^Cannot call method getId\(\) on App\\Entity\\Service\|null\.$#'
+			identifier: method.nonObject
+			count: 2
+			path: tests/Controller/Api/OrderControllerTest.php
+
+		-
+			message: '#^Cannot call method getId\(\) on object\|null\.$#'
+			identifier: method.nonObject
+			count: 6
+			path: tests/Controller/Api/OrderControllerTest.php
+
+		-
+			message: '#^Cannot call method toString\(\) on mixed\.$#'
+			identifier: method.nonObject
+			count: 6
+			path: tests/Controller/Api/OrderControllerTest.php
+
+		-
+			message: '#^Method App\\Tests\\Controller\\Api\\OrderControllerTest\:\:getAuthToken\(\) should return string but returns mixed\.$#'
+			identifier: return.type
+			count: 1
+			path: tests/Controller/Api/OrderControllerTest.php
+
+		-
+			message: '#^Parameter \#1 \$json of function json_decode expects string, string\|false given\.$#'
+			identifier: argument.type
+			count: 14
+			path: tests/Controller/Api/OrderControllerTest.php
+
+		-
+			message: '#^Parameter \#2 \$array of method PHPUnit\\Framework\\Assert\:\:assertArrayHasKey\(\) expects array\<mixed\>\|ArrayAccess\<\(int\|string\), mixed\>, mixed given\.$#'
+			identifier: argument.type
+			count: 12
+			path: tests/Controller/Api/OrderControllerTest.php
+
+		-
+			message: '#^Parameter \#6 \$content of method Symfony\\Component\\BrowserKit\\AbstractBrowser\<Symfony\\Component\\HttpFoundation\\Request,Symfony\\Component\\HttpFoundation\\Response\>\:\:request\(\) expects string\|null, string\|false given\.$#'
+			identifier: argument.type
+			count: 14
+			path: tests/Controller/Api/OrderControllerTest.php
+
+		-
+			message: '#^Cannot access offset ''isActive'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 1
+			path: tests/Controller/Api/ServiceControllerTest.php
+
+		-
+			message: '#^Cannot access offset ''price'' on mixed\.$#'
+			identifier: offsetAccess.nonOffsetAccessible
+			count: 2
+			path: tests/Controller/Api/ServiceControllerTest.php
+
+		-
+			message: '#^Parameter \#1 \$json of function json_decode expects string, string\|false given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/Controller/Api/ServiceControllerTest.php
+
+		-
+			message: '#^Parameter \#2 \$array of method PHPUnit\\Framework\\Assert\:\:assertArrayHasKey\(\) expects array\<mixed\>\|ArrayAccess\<\(int\|string\), mixed\>, mixed given\.$#'
+			identifier: argument.type
+			count: 7
+			path: tests/Controller/Api/ServiceControllerTest.php
+
+		-
+			message: '#^Call to function method_exists\(\) with ''Symfony\\\\Component\\\\Dotenv\\\\Dotenv'' and ''bootEnv'' will always evaluate to true\.$#'
+			identifier: function.alreadyNarrowedType
+			count: 1
+			path: tests/bootstrap.php
+
+		-
+			message: '#^Parameter \#1 \$environment of class App\\Kernel constructor expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/console-application-loader.php
+
+		-
+			message: '#^Parameter \#1 \$environment of class App\\Kernel constructor expects string, mixed given\.$#'
+			identifier: argument.type
+			count: 1
+			path: tests/object-manager.php
+

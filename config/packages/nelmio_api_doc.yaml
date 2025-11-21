@@ -1,0 +1,14 @@
+nelmio_api_doc:
+    documentation:
+        info:
+            title: Ocenka API
+            description: API для сервиса онлайн-оценки
+            version: 1.0.0
+    areas:
+        default:
+            path_patterns: []
+            with_attribute: false
+            disable_default_routes: true
+    models:
+        use_jms: false
+

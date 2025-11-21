@@ -1,0 +1,510 @@
+openapi: 3.0.3
+info:
+  title: Ocenka API
+  description: API для сервиса онлайн-оценки
+  version: 1.0.0
+servers:
+  - url: http://localhost/api
+    description: Development server
+
+tags:
+  - name: Auth
+    description: Аутентификация и восстановление пароля
+  - name: Services
+    description: Услуги оценки
+  - name: Orders
+    description: Заказы услуг
+
+paths:
+  /auth/login:
+    post:
+      tags:
+        - Auth
+      summary: Вход в систему
+      operationId: login
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/LoginRequest'
+      responses:
+        '200':
+          description: Успешная аутентификация
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/LoginResponse'
+        '401':
+          description: Неверные учетные данные
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Ошибка валидации
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationErrorResponse'
+
+  /auth/password-reset/init:
+    post:
+      tags:
+        - Auth
+      summary: Инициация восстановления пароля
+      operationId: passwordResetInit
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PasswordResetInitRequest'
+      responses:
+        '200':
+          description: Письмо отправлено
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+        '404':
+          description: Пользователь не найден
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Ошибка валидации
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationErrorResponse'
+
+  /auth/password-reset/confirm:
+    post:
+      tags:
+        - Auth
+      summary: Подтверждение восстановления пароля
+      operationId: passwordResetConfirm
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PasswordResetConfirmRequest'
+      responses:
+        '200':
+          description: Пароль успешно изменен
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MessageResponse'
+        '400':
+          description: Неверный или истекший токен
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Ошибка валидации
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationErrorResponse'
+
+  /services:
+    get:
+      tags:
+        - Services
+      summary: Получить список активных услуг
+      operationId: getServices
+      responses:
+        '200':
+          description: Список услуг
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ServiceResource'
+
+  /orders:
+    get:
+      tags:
+        - Orders
+      summary: Получить список всех заказов (только для администраторов)
+      operationId: getOrders
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Список заказов
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/OrderResource'
+        '401':
+          description: Не авторизован
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Доступ запрещен
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    post:
+      tags:
+        - Orders
+      summary: Создать новый заказ (публичный эндпоинт)
+      operationId: createOrder
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderCreateRequest'
+      responses:
+        '201':
+          description: Заказ создан
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderResource'
+        '404':
+          description: Услуга не найдена
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Ошибка валидации
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationErrorResponse'
+
+  /orders/{id}:
+    get:
+      tags:
+        - Orders
+      summary: Получить заказ по ID (только для администраторов)
+      operationId: getOrder
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '200':
+          description: Данные заказа
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderResource'
+        '401':
+          description: Не авторизован
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Доступ запрещен
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Заказ не найден
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+    put:
+      tags:
+        - Orders
+      summary: Обновить заказ (только для администраторов)
+      operationId: updateOrder
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/OrderUpdateRequest'
+      responses:
+        '200':
+          description: Заказ обновлен
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/OrderResource'
+        '401':
+          description: Не авторизован
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Доступ запрещен
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Заказ не найден
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '422':
+          description: Ошибка валидации
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ValidationErrorResponse'
+    delete:
+      tags:
+        - Orders
+      summary: Удалить заказ (только для администраторов)
+      operationId: deleteOrder
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+            format: uuid
+      responses:
+        '204':
+          description: Заказ удален
+        '401':
+          description: Не авторизован
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '403':
+          description: Доступ запрещен
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '404':
+          description: Заказ не найден
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+    LoginRequest:
+      type: object
+      required:
+        - email
+        - password
+      properties:
+        email:
+          type: string
+          format: email
+          example: admin@example.com
+        password:
+          type: string
+          format: password
+          example: password123
+
+    LoginResponse:
+      type: object
+      properties:
+        token:
+          type: string
+          example: eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9...
+        user:
+          $ref: '#/components/schemas/UserResource'
+
+    PasswordResetInitRequest:
+      type: object
+      required:
+        - email
+      properties:
+        email:
+          type: string
+          format: email
+          example: user@example.com
+
+    PasswordResetConfirmRequest:
+      type: object
+      required:
+        - token
+        - newPassword
+      properties:
+        token:
+          type: string
+          example: abc123xyz789
+        newPassword:
+          type: string
+          format: password
+          minLength: 8
+          example: newpassword123
+
+    UserResource:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          example: 01932d7e-8b4a-7c3f-9d2e-1f0a8b7c6d5e
+        email:
+          type: string
+          format: email
+          example: admin@example.com
+        roles:
+          type: array
+          items:
+            type: string
+          example: ["ROLE_USER", "ROLE_ADMIN"]
+
+    ServiceResource:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          example: 01932d7e-8b4a-7c3f-9d2e-1f0a8b7c6d5e
+        name:
+          type: string
+          example: Оценка стоимости автомобиля
+        slug:
+          type: string
+          example: car-valuation
+        description:
+          type: string
+          nullable: true
+          example: Профессиональная оценка рыночной стоимости автомобиля
+        price:
+          $ref: '#/components/schemas/Money'
+        isActive:
+          type: boolean
+          example: true
+
+    OrderResource:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          example: 01932d7e-8b4a-7c3f-9d2e-1f0a8b7c6d5e
+        orderNumber:
+          type: string
+          example: ORD-20241118-001
+        service:
+          $ref: '#/components/schemas/ServiceResource'
+        customerEmail:
+          type: string
+          format: email
+          example: customer@example.com
+        price:
+          $ref: '#/components/schemas/Money'
+        status:
+          type: string
+          enum: [pending, completed, cancelled]
+          example: pending
+        createdAt:
+          type: string
+          format: date-time
+          example: 2024-11-18 13:45:00
+
+    OrderCreateRequest:
+      type: object
+      required:
+        - serviceId
+        - customerEmail
+      properties:
+        serviceId:
+          type: string
+          format: uuid
+          example: 01932d7e-8b4a-7c3f-9d2e-1f0a8b7c6d5e
+        customerEmail:
+          type: string
+          format: email
+          example: customer@example.com
+
+    OrderUpdateRequest:
+      type: object
+      properties:
+        status:
+          type: string
+          enum: [pending, completed, cancelled]
+          example: completed
+
+    Money:
+      type: object
+      properties:
+        amount:
+          type: integer
+          example: 50000
+          description: Сумма в минимальных единицах валюты (копейки)
+        currency:
+          type: string
+          example: RUB
+
+    MessageResponse:
+      type: object
+      properties:
+        message:
+          type: string
+          example: Operation completed successfully
+
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          example: Not found
+        message:
+          type: string
+          example: The requested resource was not found
+
+    ValidationErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          example: Validation failed
+        violations:
+          type: array
+          items:
+            type: object
+            properties:
+              field:
+                type: string
+                example: email
+              message:
+                type: string
+                example: This value is not a valid email address
+

@@ -1,0 +1,8 @@
+{% macro js(filename) %}
+    {% if app.environment == 'prod' %}
+        <script src="{{ asset('build/' ~ filename ~ '.min.js') }}"></script>
+    {% else %}
+        <script src="{{ asset('js/' ~ filename ~ '.js') }}"></script>
+    {% endif %}
+{% endmacro %}
+

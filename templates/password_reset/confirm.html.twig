@@ -1,0 +1,65 @@
+{% extends 'auth/base.html.twig' %}
+{% import 'macros/assets.html.twig' as assets %}
+
+{% block title %}Установка нового пароля{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-5">
+            <div class="card shadow-sm">
+                <div class="card-body p-5">
+                    <h2 class="card-title text-center mb-4">Новый пароль</h2>
+                    
+                    <div id="message" class="alert d-none" role="alert"></div>
+
+                    <form id="password-confirm-form">
+                        <input type="hidden" id="token" value="{{ token }}">
+
+                        <div class="mb-3">
+                            <label for="newPassword" class="form-label">Новый пароль</label>
+                            <input 
+                                type="password" 
+                                class="form-control" 
+                                id="newPassword" 
+                                name="newPassword" 
+                                placeholder="Введите новый пароль"
+                                minlength="8"
+                                required
+                            >
+                            <div class="form-text">Минимум 8 символов</div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="confirmPassword" class="form-label">Подтвердите пароль</label>
+                            <input 
+                                type="password" 
+                                class="form-control" 
+                                id="confirmPassword" 
+                                name="confirmPassword" 
+                                placeholder="Введите пароль ещё раз"
+                                minlength="8"
+                                required
+                            >
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary" id="submit-btn">
+                                Установить пароль
+                            </button>
+                            <a href="{{ path('admin_login') }}" class="btn btn-outline-secondary">
+                                Назад к входу
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+{{ assets.js('password-reset-confirm') }}
+{% endblock %}
+

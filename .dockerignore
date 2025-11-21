@@ -1,0 +1,36 @@
+###> Docker ###
+.dockerignore
+docker-compose.yml
+compose.yaml
+Dockerfile
+.git
+.gitignore
+###< Docker ###
+
+###> Symfony ###
+/var/
+/vendor/
+.env.local
+.env.local.php
+.env.*.local
+###< Symfony ###
+
+###> IDE ###
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+###< IDE ###
+
+###> OS ###
+.DS_Store
+Thumbs.db
+###< OS ###
+
+###> Node.js ###
+node_modules/
+npm-debug.log
+yarn-error.log
+###< Node.js ###
+

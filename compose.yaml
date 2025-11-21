@@ -1,0 +1,76 @@
+services:
+  db:
+    image: mysql:8.0
+    container_name: ocenka_mysql
+    restart: unless-stopped
+    environment:
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD:-root}
+      MYSQL_DATABASE: ${MYSQL_DATABASE:-symfony}
+      MYSQL_USER: ${MYSQL_USER:-symfony}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD:-symfony}
+    ports:
+      - "${MYSQL_PORT:-3306}:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+      - ./docker/mysql/my.cnf:/etc/mysql/conf.d/my.cnf:ro
+    networks:
+      - symfony
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  php-fpm:
+    build:
+      context: ./docker/php-fpm
+      dockerfile: Dockerfile
+    container_name: ocenka_php
+    restart: unless-stopped
+    working_dir: /var/www/symfony
+    volumes:
+      - ./:/var/www/symfony
+      - ./docker/php-fpm/php.ini:/usr/local/etc/php/conf.d/custom.ini:ro
+    networks:
+      - symfony
+    depends_on:
+      db:
+        condition: service_healthy
+      mailhog:
+        condition: service_started
+    environment:
+      DATABASE_URL: mysql://${MYSQL_USER:-symfony}:${MYSQL_PASSWORD:-symfony}@db:3306/${MYSQL_DATABASE:-symfony}?serverVersion=8.0
+      MAILER_DSN: smtp://mailhog:1025
+
+  mailhog:
+    image: mailhog/mailhog:latest
+    container_name: ocenka_mailhog
+    restart: unless-stopped
+    ports:
+      - "${MAILHOG_WEB_PORT:-8025}:8025"
+      - "${MAILHOG_SMTP_PORT:-1025}:1025"
+    networks:
+      - symfony
+
+  nginx:
+    image: nginx:alpine
+    container_name: ocenka_nginx
+    restart: unless-stopped
+    ports:
+      - "${NGINX_PORT:-80}:80"
+    volumes:
+      - ./:/var/www/symfony
+      - ./docker/nginx/default.conf:/etc/nginx/conf.d/default.conf:ro
+    networks:
+      - symfony
+    depends_on:
+      - php-fpm
+
+networks:
+  symfony:
+    driver: bridge
+
+volumes:
+  mysql_data:
+    driver: local
+

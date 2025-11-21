@@ -1,0 +1,48 @@
+{% extends 'auth/base.html.twig' %}
+{% import 'macros/assets.html.twig' as assets %}
+
+{% block title %}Восстановление пароля{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6 col-lg-5">
+            <div class="card shadow-sm">
+                <div class="card-body p-5">
+                    <h2 class="card-title text-center mb-4">Восстановление пароля</h2>
+                    
+                    <div id="message" class="alert d-none" role="alert"></div>
+
+                    <form id="password-reset-form">
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input 
+                                type="email" 
+                                class="form-control" 
+                                id="email" 
+                                name="email" 
+                                placeholder="Введите ваш email"
+                                required
+                            >
+                        </div>
+
+                        <div class="d-grid gap-2">
+                            <button type="submit" class="btn btn-primary" id="submit-btn">
+                                Отправить
+                            </button>
+                            <a href="{{ path('admin_login') }}" class="btn btn-outline-secondary">
+                                Назад к входу
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+{{ assets.js('password-reset-init') }}
+{% endblock %}
+

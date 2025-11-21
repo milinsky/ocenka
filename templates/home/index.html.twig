@@ -1,0 +1,55 @@
+{% extends 'base.html.twig' %}
+{% import 'macros/assets.html.twig' as assets %}
+
+{% block title %}Заказать услугу оценки{% endblock %}
+
+{% block body %}
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8 col-lg-6">
+            <div class="card shadow">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0">Заказать услугу оценки</h4>
+                </div>
+                <div class="card-body">
+                    <div id="alert-container"></div>
+
+                    <form id="order-form">
+                        <div class="mb-3">
+                            <label for="service" class="form-label">Услуга</label>
+                            <select class="form-select" id="service" name="serviceId" required>
+                                <option value="">Выберите услугу...</option>
+                            </select>
+                            <div class="invalid-feedback"></div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Электронная почта</label>
+                            <input type="email" class="form-control" id="email" name="customerEmail" required>
+                            <div class="invalid-feedback"></div>
+                        </div>
+
+                        <div class="mb-4">
+                            <label class="form-label">Стоимость</label>
+                            <div class="h4 text-primary" id="price-display">-</div>
+                        </div>
+
+                        <button type="submit" class="btn btn-primary w-100" id="submit-btn">
+                            <span id="submit-text">Подтвердить</span>
+                            <span id="submit-spinner" class="spinner-border spinner-border-sm d-none" role="status"></span>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="mt-3 text-center text-muted">
+                <small>После отправки заказа вы получите подтверждение на указанную электронную почту</small>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block javascripts %}
+{{ assets.js('order-form') }}
+{% endblock %}
